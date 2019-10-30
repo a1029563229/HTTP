@@ -44,3 +44,13 @@
 - Keep-Alive 和哑代理
     - Connection 首部和盲中继
     - 代理和逐跳首部：现代的代理都绝不能转发 Connection 首部和所有名字出现在 Connection 值中的首部；
+ 
+- 插入 Proxy-Connection
+    - 客户端向代理服务器传入 Proxy-Connection，由代理服务器决定是否转成 Connection 字段；
+    - 多层代理时依然无法解决；
+
+- HTTP/1.1 持久连接，HTTP/1.1 持久连接在默认情况下是激活的，除非显式传递 Connection: close；
+
+### 管道化连接
+
+- HTTP/1.1 允许在持久连接上可选地使用请求管道，在响应到达之前，可以将多条请求放入队列。在高延时网络条件下，这样做可以降低网络的环回时间，提高性能。
